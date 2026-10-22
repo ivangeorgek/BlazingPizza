@@ -10,7 +10,9 @@
 		{
 			@foreach (var special in specials)
 			{
-				<li style="background-image: url('@special.ImageUrl')">
+				
+				<li @onclick="() => ShowConfigurePizzaDialog(special)"
+				    style="background-image: url('@special.ImageUrl')">
 					<div class="pizza-info">
 						<span class="title">@special.Name</span>
 						@special.Description
@@ -22,9 +24,15 @@
 	</ul>
 </div>
 
+@if (_showingConfigureDialog)
+{
+	<ConfigurePizzaDialog Pizza="_configuringPizza" />
+}
 
 @code {
 	List<PizzaSpecial> specials = new();
+	Pizza _configuringPizza;
+	bool _showingConfigureDialog;
 
 	protected override async Task OnInitializedAsync()
 	{
@@ -33,6 +41,20 @@
 				NavigationManager.BaseUri + "specials"
 				) ?? new List<PizzaSpecial>();
 	}
+	
+	
+	void ShowConfigurePizzaDialog(PizzaSpecial special)
+	{
+		_configuringPizza = new Pizza()
+		{
+			Special = special,
+			SpecialId = special.Id,
+			Size = Pizza.DefaultSize
+		};
+
+		_showingConfigureDialog = true;
+	}
+
 }
 
 		
