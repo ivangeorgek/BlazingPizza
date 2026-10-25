@@ -1,9 +1,19 @@
 @page "/"
 @using System.Net.Http.Json
-@using BlazingPizza.Services
 @inject HttpClient HttpClient;
 @inject NavigationManager NavigationManager
 @inject OrderState OrderState
+
+<div class="top-bar">
+	<a class="logo" href="">
+		<img src="img/logo.svg" alt="Blazing Pizza" />
+	</a>
+
+	<a href="" class="nav-tab active">
+		<img src="img/pizza-slice.svg" alt="" />
+		<div>Get Pizza</div>
+	</a>
+</div>
 
 <div class="main">
 	<h1>Blazing Pizzas</h1>
