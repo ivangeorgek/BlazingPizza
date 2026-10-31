@@ -4,23 +4,6 @@
 @inject NavigationManager NavigationManager
 
 
-<div class="top-bar">
-    <a class="logo" href="">
-        <img src="img/logo.svg" alt="Blazing Pizza" />
-    </a>
-
-    <NavLink href="" class="nav-tab"
-             Match="NavLinkMatch.All">
-        <img src="img/pizza-slice.svg" alt="" />
-        <div>Get Pizza</div>
-    </NavLink>
-
-    <NavLink href="myorders" class="nav-tab">
-        <img src="img/bike.svg" alt="" />
-        <div>My Orders</div>
-    </NavLink>
-</div>
-
 <div class="main">
     @if (ordersWithStatus is null)
     {
